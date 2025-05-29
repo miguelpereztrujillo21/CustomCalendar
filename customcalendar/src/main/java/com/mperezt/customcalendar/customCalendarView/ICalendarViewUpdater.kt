@@ -1,11 +1,11 @@
-package es.redsys.ess.presentation.features.globalState.calendar.customCalendarView
+package com.mperezt.customcalendar.customCalendarView
 
-import es.redsys.ess.presentation.features.globalState.calendar.adapter.CalendarAdapterImpl
-import es.redsys.ess.presentation.model.IncidentPresentation
+import com.mperezt.customcalendar.customCalendarView.adapter.CalendarAdapterImpl
+import com.mperezt.customcalendar.model.CalendarDayPresentation
 
 interface ICalendarViewUpdater {
     fun updateCalendar(
-        selectedDays: Set<IncidentPresentation>,
+        selectedDays: Set<CalendarDayPresentation>,
         maxBackSteps: Int,
         enabledDays: Int? = null,
         selectable: Boolean? = false,

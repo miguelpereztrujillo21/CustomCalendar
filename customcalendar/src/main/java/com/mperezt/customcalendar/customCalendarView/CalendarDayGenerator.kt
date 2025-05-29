@@ -1,19 +1,16 @@
-package es.redsys.ess.presentation.features.globalState.calendar.customCalendarView
+package com.mperezt.customcalendar.customCalendarView
 
-import es.redsys.ess.presentation.model.CalendarDayPresentation
-import es.redsys.ess.presentation.model.IncidentPresentation
-import es.redsys.ess.presentation.utils.DateUtils
-import es.redsys.ess.presentation.utils.constants.SPACE
-import es.redsys.ess.utils.constants.COMPLETE_DATE_FORMAT
-import java.text.SimpleDateFormat
+import com.mperezt.customcalendar.model.CalendarDayPresentation
+import com.mperezt.customcalendar.utils.constants.COMPLETE_DATE_FORMAT
 import java.time.LocalDate
-import java.util.Calendar
-import java.util.Locale
+import java.time.format.DateTimeFormatter
 
 object CalendarDayGenerator {
 
+    private val dateFormatter = DateTimeFormatter.ofPattern(COMPLETE_DATE_FORMAT)
+
     fun generateCalendarDays(
-        incidents: Set<IncidentPresentation>,
+        selectedDays: List<CalendarDayPresentation>,
         monthOffset: Int = 0,
         enabledDays: Int? = null
     ): List<CalendarDayPresentation> {
@@ -24,7 +21,7 @@ object CalendarDayGenerator {
 
         val previousMonthDays = generateLastMonthWeekWhiteSpacesDays(firstDayOfMonth)
         val currentMonthDays = generateCurrentMonthDays(
-            firstDayOfMonth, daysInMonth, incidents, startEnabledDate, today
+            firstDayOfMonth, daysInMonth, selectedDays, startEnabledDate, today
         )
 
         return previousMonthDays + currentMonthDays
@@ -41,43 +38,36 @@ object CalendarDayGenerator {
     private fun generateCurrentMonthDays(
         firstDayOfMonth: LocalDate,
         daysInMonth: Int,
-        incidents: Set<IncidentPresentation>,
+        selectedDays: List<CalendarDayPresentation>,
         startEnabledDate: LocalDate,
         endEnabledDate: LocalDate
     ): List<CalendarDayPresentation> {
         return (1..daysInMonth).map { day ->
             val dayDate = firstDayOfMonth.withDayOfMonth(day)
-            val isEnabled = DateUtils.isDayWithinRange(dayDate, startEnabledDate, endEnabledDate)
-            val incident = DateUtils.findIncidentForDay(dayDate, incidents)
+            val fullDateString = dayDate.format(dateFormatter)
+            val isEnabled = isDayWithinRange(dayDate, startEnabledDate, endEnabledDate)
+
+            val selectedDay = findSelectedDayForDate(fullDateString, selectedDays)
+
             CalendarDayPresentation(
-                fullDate = dayDate.toString(),
-                isCurrentMonth = true,
+                fullDate = fullDateString,
+                itemId = selectedDay?.itemId,
+                selected = isEnabled && selectedDay != null,
                 enabled = isEnabled,
-                selected = isEnabled && incident != null,
-                incidentId = incident?.incidentId
+                isCurrentMonth = true,
+                associatedItem = selectedDay?.associatedItem
             )
         }
     }
 
-    private fun findIncidentForDay(
-        day: Int,
-        calendar: Calendar,
-        incidents: Set<IncidentPresentation>
-    ): IncidentPresentation? {
-        return incidents.find { incident ->
-            val incidentDate = getDateFormat().parse(incident.startDate.split(SPACE)[0])
-            val incidentCalendar = Calendar.getInstance().apply {
-                if (incidentDate != null) {
-                    time = incidentDate
-                }
-            }
-            incidentCalendar.get(Calendar.DAY_OF_MONTH) == day &&
-                    incidentCalendar.get(Calendar.MONTH) == calendar.get(Calendar.MONTH) &&
-                    incidentCalendar.get(Calendar.YEAR) == calendar.get(Calendar.YEAR)
-        }
+    private fun findSelectedDayForDate(
+        dateString: String,
+        selectedDays: List<CalendarDayPresentation>
+    ): CalendarDayPresentation? {
+        return selectedDays.find { it.fullDate == dateString }
     }
 
-    private fun getDateFormat(): SimpleDateFormat {
-        return SimpleDateFormat(COMPLETE_DATE_FORMAT, Locale.getDefault())
+    private fun isDayWithinRange(day: LocalDate, startDate: LocalDate, endDate: LocalDate): Boolean {
+        return !day.isBefore(startDate) && !day.isAfter(endDate)
     }
 }

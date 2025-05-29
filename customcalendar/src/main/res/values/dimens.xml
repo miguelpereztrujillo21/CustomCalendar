@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Margins -->
+    <dimen name="margin_small_negative">-10dp</dimen>
+    <dimen name="margin_xxsmall">2dp</dimen>
+    <dimen name="margin_xsmall">4dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium_small">12dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_ml">20dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_xlarge">32dp</dimen>
+    <dimen name="margin_xxlarge">37dp</dimen>
+    <dimen name="margin_xxxlarge">48dp</dimen>
+    <dimen name="margin_xxxxlarge">52dp</dimen>
+    <dimen name="margin_xxxxxlarge">64dp</dimen>
+    <dimen name="margin_xxxxxxlarge">72dp</dimen>
+    <dimen name="margin_xxxxxxxlarge">76dp</dimen>
+    <dimen name="margin_extra_large">80dp</dimen>
+
+    <!-- Paddings -->
+    <dimen name="padding_xsmall">4dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_small_medium">12dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_medium_large">20dp</dimen>
+    <dimen name="padding_large">24dp</dimen>
+    <dimen name="padding_xlarge">32dp</dimen>
+
+    <!-- Text Sizes Resizable-->
+    <dimen name="text_size_xsmall">12sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_sm">15sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_xsm">17sp</dimen>
+    <dimen name="text_size_ml">18sp</dimen>
+    <dimen name="text_size_mxl">19sp</dimen>
+    <dimen name="text_size_large">20sp</dimen>
+    <dimen name="text_size_xl">22sp</dimen>
+    <dimen name="text_size_xlarge">24sp</dimen>
+    <dimen name="text_size_xxlarge">42sp</dimen>
+
+    <!-- Text Sizes Not Resizable -->
+    <dimen name="text_size_nr_xsmall">12dp</dimen>
+    <dimen name="text_size_nr_small">14dp</dimen>
+    <dimen name="text_size_nr_medium">16dp</dimen>
+    <dimen name="text_size_nr_large">20dp</dimen>
+    <dimen name="text_size_nr_xlarge">24dp</dimen>
+
+    <!-- Elevation -->
+    <dimen name="elevation_zero">0dp</dimen>
+    <dimen name="elevation_small">2dp</dimen>
+    <dimen name="elevation_medium">4dp</dimen>
+    <dimen name="elevation_large">8dp</dimen>
+    <dimen name="elevation_xlarge">10dp</dimen>
+    <dimen name="elevation_xxlarge">12dp</dimen>
+    <dimen name="elevation_xxxlarge">16dp</dimen>
+
+    <!-- Icon Sizes -->
+    <dimen name="icon_size_xxxsmall">12dp</dimen>
+    <dimen name="icon_size_xxsmall">16dp</dimen>
+    <dimen name="icon_size_xsmall">20dp</dimen>
+    <dimen name="icon_size_small">24dp</dimen>
+    <dimen name="icon_size_xsm">26dp</dimen>
+    <dimen name="icon_size_sm">28dp</dimen>
+    <dimen name="icon_size_medium">32dp</dimen>
+    <dimen name="icon_size_ml">40dp</dimen>
+    <dimen name="icon_size_large">48dp</dimen>
+
+    <!-- Layout Sizes -->
+    <dimen name="layout_size_xxxsmall">2dp</dimen>
+    <dimen name="layout_size_xxsmall">3dp</dimen>
+    <dimen name="layout_size_xsmall">4dp</dimen>
+    <dimen name="layout_size_small">8dp</dimen>
+    <dimen name="layout_size_xsm">10dp</dimen>
+    <dimen name="layout_size_sm">12dp</dimen>
+    <dimen name="layout_size_medium">16dp</dimen>
+    <dimen name="layout_size_xmedium">20dp</dimen>
+    <dimen name="layout_size_ml">24dp</dimen>
+    <dimen name="layout_size_large">28dp</dimen>
+    <dimen name="layout_size_xlarge">32dp</dimen>
+    <dimen name="layout_size_xxlarge">45dp</dimen>
+    <dimen name="layout_size_xxxlarge">90dp</dimen>
+    <dimen name="layout_size_xxxxlarge">200dp</dimen>
+
+    <!-- Corner Radius -->
+    <dimen name="corner_radius_small">4dp</dimen>
+    <dimen name="corner_radius_medium">8dp</dimen>
+    <dimen name="corner_radius_ml">12dp</dimen>
+    <dimen name="corner_radius_large">14dp</dimen>
+    <dimen name="corner_radius_xl">16dp</dimen>
+    <dimen name="corner_radius_xxl">24dp</dimen>
+    <dimen name="corner_radius_xxxl">42dp</dimen>
+
+    <!-- Stroke Width -->
+    <dimen name="stroke_width_xsmall">0.5dp</dimen>
+    <dimen name="stroke_width_small">1dp</dimen>
+    <dimen name="stroke_width_medium">2dp</dimen>
+    <dimen name="stroke_width_large">4dp</dimen>
+    <dimen name="stroke_width_xlarge">8dp</dimen>
+</resources>

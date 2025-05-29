@@ -1,19 +1,16 @@
-package es.redsys.ess.presentation.features.globalState.calendar.customCalendarView
+package com.mperezt.customcalendar.customCalendarView
 
 import android.content.Context
-import android.util.TypedValue
 import android.view.Gravity
 import android.widget.LinearLayout
 import android.widget.TextView
-import es.redsys.ess.R
-import es.redsys.ess.databinding.ViewCustomCalendarBinding
-import es.redsys.ess.presentation.features.globalState.calendar.adapter.CalendarAdapterImpl
-import es.redsys.ess.presentation.model.CalendarDayPresentation
-import es.redsys.ess.presentation.model.IncidentPresentation
-import es.redsys.ess.presentation.utils.constants.SPACE
-import es.redsys.ess.presentation.utils.constants.WEEK_DAYS
-import es.redsys.ess.utils.constants.COMPLETE_DATE_FORMAT
-import es.redsys.ess.utils.constants.MONTH_YEAR_FORMAT
+import com.mperezt.customcalendar.R
+import com.mperezt.customcalendar.customCalendarView.adapter.CalendarAdapterImpl
+import com.mperezt.customcalendar.databinding.ViewCustomCalendarBinding
+import com.mperezt.customcalendar.model.CalendarDayPresentation
+import com.mperezt.customcalendar.utils.constants.COMPLETE_DATE_FORMAT
+import com.mperezt.customcalendar.utils.constants.MONTH_YEAR_FORMAT
+import com.mperezt.customcalendar.utils.constants.WEEK_DAYS
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -28,7 +25,7 @@ class CustomCalendarViewSetup(
 ) : ICalendarViewUpdater {
 
     private var monthOffset = 0
-    private var selectedDays: Set<IncidentPresentation> = emptySet()
+    private var selectedDays: Set<CalendarDayPresentation> = emptySet()
     private var maxBackSteps: Int = 0
     private var enabledDays: Int? = null
     private var selectable: Boolean = false
@@ -58,19 +55,19 @@ class CustomCalendarViewSetup(
 
     private fun addWeekDaysHeader() {
         binding.calendarHeaderDays.removeAllViews()
-        val heightInDp = TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            40f,
-            context.resources.displayMetrics
-        ).toInt()
+        val layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
+        layoutParams.gravity = Gravity.CENTER
 
         WEEK_DAYS.forEach { day ->
             val dayTextView = TextView(context).apply {
-                layoutParams = LinearLayout.LayoutParams(heightInDp, heightInDp, 1f)
+                setLayoutParams(layoutParams)
                 text = day
                 textSize = 15f
-                setTextColor(context.getColor(R.color.light_grey))
+                setTextColor(context.getColor(R.color.neutral_dark_light))
                 gravity = Gravity.CENTER
+                textAlignment = TextView.TEXT_ALIGNMENT_CENTER
+                includeFontPadding = false
+                setPadding(0, 0, 0, 0)
             }
             binding.calendarHeaderDays.addView(dayTextView)
         }
@@ -110,7 +107,7 @@ class CustomCalendarViewSetup(
         }
 
         val isIncidentInPreviousMonth = calendarDays.any {
-            val dateString = it.day.split(SPACE)[0]
+            val dateString = it.day.split(" ")[0]
             try {
                 if (dateString.isNotEmpty()) {
                     val incidentDate = LocalDate.parse(dateString, dateFormatter)
@@ -133,7 +130,7 @@ class CustomCalendarViewSetup(
     }
 
     override fun updateCalendar(
-        selectedDays: Set<IncidentPresentation>,
+        selectedDays: Set<CalendarDayPresentation>,
         maxBackSteps: Int,
         enabledDays: Int?,
         selectable: Boolean?,
@@ -143,7 +140,8 @@ class CustomCalendarViewSetup(
         this.maxBackSteps = maxBackSteps
         this.enabledDays = enabledDays
         this.selectable = selectable ?: false
-        this.listener = listener
+        this.listener = listener ?: this.listener
+        addWeekDaysHeader()
         setupCalendarAdapter()
         binding.textViewTitle.text = getCurrentMonthTitle()
         updateNavigationButtonsState()

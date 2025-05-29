@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="selected_color">#2F3036</color>
+    <color name="degradation">#FFF5E7</color>
+    <color name="degradation_light">#FFFCF8</color>
+    <color name="maintenance">#EBF3FF</color>
+    <color name="maintenance_light">#B4DBFF</color>
+    <color name="interruption">#FFEBED</color>
+    <color name="interruption_light">#FFF9FA</color>
+    <color name="light_grey">#ff9e9e9e</color>
+    <color name="light_grey_light">#ffD3D3D3</color>
+    <color name="gray_services_card">#8F9098</color>
+    <color name="light_more_grey">#9DD3D3D3</color>
+    <color name="neutral_grey">#FAFAFA</color>
+    <color name="transparent">#00000000</color>
+    <color name="light_green">#E7F4E8</color>
+    <color name="green">#298267</color>
+    <color name="light_red">#FFE2E5</color>
+    <color name="red">#ED3241</color>
+
+    <color name="maintenance_dark_blue">#2897FF</color>
+    <color name="maintenance_light_blue">#B4DBFF</color>
+
+    <color name="blue_light">#EBF3FF</color>
+
+    <color name="yellow_background">#FFF2C2</color>
+    <color name="neutral_dark">#2F3036</color>
+    <color name="neutral_dark_medium">#494A50</color>
+    <color name="neutral_dark_light">#71727A</color>
+    <color name="neutral_dark_darkest">#1F2024</color>
+    <color name="selected_day_background">#FFF2C2</color>
+    <color name="neutral_light">#F3F8FF</color>
+    <color name="neutral_dark_darknest">#1F2024</color>
+    <color name="neutral_light_dark">#D4D6DD</color>
+    <color name="neutral_dark_dark">#2F3036</color>
+    <color name="neutral_light_medium">#F2F2F2</color>
+    <color name="neutral_light_darknest">#C5C6CC</color>
+
+    <color name="comparative_percent_up">#0F8B66</color>
+    <color name="comparative_percent_down">#E21222</color>
+
+    <color name="quality_red">#FF616D</color>
+    <color name="quality_yellow">#E8AC39</color>
+    <color name="quality_green">#3AC0A0</color>
+
+    <color name="evolutionary_blue">#006FFD</color>
+    <color name="evolutionary_red">#ED3241</color>
+
+    <color name="maintenance_indicator_bar">#B4DBFF</color>
+    <color name="maintenance_indicator_bar_selected">#006FFD</color>
+
+    <color name="custom_marker_gray">#333333</color>
+    <color name="neutral_light_light_blue">#F8F9FE</color>
+    <color name="neutral_blue">#006FFD</color>
+
+    <color name="color_degradation">#FFF5E7</color>
+    <color name="color_maintenance">#EBF3FF</color>
+    <color name="color_interruption">#FFEBED</color>
+</resources>

@@ -1,12 +1,12 @@
-package es.redsys.ess.presentation.features.globalState.calendar.customCalendarView
+package com.mperezt.customcalendar.customCalendarView
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import es.redsys.ess.databinding.ViewCustomCalendarBinding
-import es.redsys.ess.presentation.features.globalState.calendar.adapter.CalendarAdapterImpl
-import es.redsys.ess.presentation.model.IncidentPresentation
+import com.mperezt.customcalendar.databinding.ViewCustomCalendarBinding
+import com.mperezt.customcalendar.customCalendarView.adapter.CalendarAdapterImpl
+import com.mperezt.customcalendar.model.CalendarDayPresentation
 
 class CustomCalendarView @JvmOverloads constructor(
     context: Context,
@@ -17,7 +17,7 @@ class CustomCalendarView @JvmOverloads constructor(
 
     private val binding: ViewCustomCalendarBinding =
         ViewCustomCalendarBinding.inflate(LayoutInflater.from(context), this, true)
-    private val incidents = mutableSetOf<IncidentPresentation>()
+    private val selectedDays = mutableListOf<CalendarDayPresentation>()
     private val icalendarViewUpdater: ICalendarViewUpdater = CustomCalendarViewSetup(
         context, binding, listener
     )
@@ -31,14 +31,16 @@ class CustomCalendarView @JvmOverloads constructor(
     }
 
     fun setSelectedDays(
-        days: List<IncidentPresentation>,
+        days: List<CalendarDayPresentation>,
         maxBackSteps: Int,
         enabledDays: Int? = null,
-        selectable: Boolean? = false,
+        selectable: Boolean = false,
         listener: CalendarAdapterImpl.OnDayClickListener? = null
     ) {
-        incidents.clear()
-        incidents.addAll(days)
-        (icalendarViewUpdater as CustomCalendarViewSetup).updateCalendar(incidents, maxBackSteps, enabledDays, selectable, listener)
+        selectedDays.clear()
+        selectedDays.addAll(days)
+        (icalendarViewUpdater as CustomCalendarViewSetup).updateCalendar(
+            selectedDays, maxBackSteps, enabledDays, selectable, listener
+        )
     }
 }
